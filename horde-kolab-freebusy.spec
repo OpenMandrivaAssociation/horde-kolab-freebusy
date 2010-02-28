@@ -21,10 +21,9 @@ Requires:      horde-icalendar
 Requires:      kolab-storage
 Requires:      kolab-server
 Requires:      php-dba
-BuildRequires: horde-framework
 BuildRequires: php-pear
 BuildRequires: php-pear-channel-horde
-BuildRoot:     %{_tmppath}/%{name}-%{version}
+
 
 %description
 This package provides free/busy information for the users of a Kolab server.
