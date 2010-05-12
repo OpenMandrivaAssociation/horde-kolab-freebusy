@@ -6,7 +6,7 @@
 
 Name:          horde-kolab-freebusy
 Version:       0.1.5
-Release:       %mkrel 2
+Release:       %mkrel 3
 Summary:       A package for providing free/busy information
 License:       LGPL
 Group:         Networking/Mail
@@ -18,8 +18,8 @@ Requires:      php-pear
 Requires:      horde-framework
 Requires:      horde-date
 Requires:      horde-icalendar
-Requires:      kolab-storage
-Requires:      kolab-server
+Requires:      horde-kolab-storage
+Requires:      horde-kolab-server
 Requires:      php-dba
 BuildRequires: php-pear
 BuildRequires: php-pear-channel-horde
