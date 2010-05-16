@@ -12,8 +12,9 @@ License:       LGPL
 Group:         Networking/Mail
 Url:           http://pear.horde.org/index.php?package=%{prj}
 Source0:       %{prj}-%{version}.tgz
+Patch0:	       config.php.diff
 BuildArch:     noarch
-Requires(pre): php-pear
+Requires(pre): %{_bindir}/pear
 Requires:      php-pear
 Requires:      horde-framework
 Requires:      horde-date
@@ -21,6 +22,7 @@ Requires:      horde-icalendar
 Requires:      horde-kolab-storage
 Requires:      horde-kolab-server
 Requires:      php-dba
+BuildRequires: horde-framework
 BuildRequires: php-pear
 BuildRequires: php-pear-channel-horde
 
@@ -35,12 +37,14 @@ information once a client requests this data for a particular user.
 
 %prep
 %setup -q -n %{prj}-%{version}
-%__cp %{SOURCE0} %{prj}-%{version}.tgz
+%patch0 -p0
+cp %{SOURCE0} %{prj}-%{version}.tgz
+
 
 %build
 
 %install
-pear -d www_dir=/srv/www/htdocs/freebusy install --packagingroot %{buildroot} --nodeps --offline %{prj}-%{version}.tgz
+pear -d www_dir=/var/www/html/kolab/freebusy install --packagingroot %{buildroot} --nodeps --offline %{prj}-%{version}.tgz
 
 %__rm -rf %{buildroot}/%{peardir}/.{filemap,lock,registry,channels,depdb,depdblock}
 
@@ -81,9 +85,9 @@ fi
 %{peardir}/tests/Kolab_FreeBusy/Horde/Kolab/FreeBusy/AllTests.php
 %{peardir}/tests/Kolab_FreeBusy/Horde/Kolab/FreeBusy/FreeBusyTest.php
 %{peardir}/tests/Kolab_FreeBusy/Horde/Kolab/FreeBusy/FreeBusyScenarioTest.php
-%dir /srv/www/htdocs/freebusy
-%config /srv/www/htdocs/freebusy/config.php
-/srv/www/htdocs/freebusy/freebusy.php
-/srv/www/htdocs/freebusy/pfb.php
-/srv/www/htdocs/freebusy/regenerate.php
-%attr(750,wwwrun,www) %{cachedir}
+%dir /var/www/html/kolab/freebusy
+%config /var/www/html/kolab/freebusy/config.php
+/var/www/html/kolab/freebusy/freebusy.php
+/var/www/html/kolab/freebusy/pfb.php
+/var/www/html/kolab/freebusy/regenerate.php
+%attr(750,root,root) %{cachedir}
