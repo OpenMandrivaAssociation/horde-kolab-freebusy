@@ -6,13 +6,12 @@
 
 Name:          horde-kolab-freebusy
 Version:       0.1.5
-Release:       %mkrel 4
+Release:       %mkrel 5
 Summary:       A package for providing free/busy information
 License:       LGPL
 Group:         Networking/Mail
 Url:           http://pear.horde.org/index.php?package=%{prj}
 Source0:       %{prj}-%{version}.tgz
-Patch0:	       config.php.diff
 BuildArch:     noarch
 Requires(pre): %{_bindir}/pear
 Requires:      php-pear
@@ -37,7 +36,6 @@ information once a client requests this data for a particular user.
 
 %prep
 %setup -q -n %{prj}-%{version}
-%patch0 -p0
 cp %{SOURCE0} %{prj}-%{version}.tgz
 
 
