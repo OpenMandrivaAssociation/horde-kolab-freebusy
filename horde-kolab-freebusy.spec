@@ -1,12 +1,12 @@
 %define prj Kolab_FreeBusy
-
+%define kolab_webroot %{_var}/www/html/kolab
 %define xmldir  %{_var}/lib/pear
 %define peardir %(pear config-get php_dir 2> /dev/null)
 %define cachedir %{_var}/cache/freebusy
 
 Name:          horde-kolab-freebusy
-Version:       0.1.5
-Release:       %mkrel 5
+Version:       0.1.7
+Release:       %mkrel 1
 Summary:       A package for providing free/busy information
 License:       LGPL
 Group:         Networking/Mail
@@ -66,26 +66,52 @@ fi
 %{xmldir}/%{prj}.xml
 %dir %{peardir}/Horde/Kolab
 %dir %{peardir}/Horde/Kolab/FreeBusy
+%dir %{peardir}/Horde/Kolab/FreeBusy/Cache
+%dir %{peardir}/Horde/Kolab/Test
+%dir %{peardir}/docs/Kolab_FreeBusy
+%dir %{peardir}/tests/Kolab_FreeBusy
+%dir %{peardir}/tests/Kolab_FreeBusy/Horde
+%dir %{peardir}/tests/Kolab_FreeBusy/Horde/Kolab
+%dir %{peardir}/tests/Kolab_FreeBusy/Horde/Kolab/FreeBusy
+%dir /var/www/html/kolab/freebusy
 %{peardir}/Horde/Kolab/FreeBusy.php
 %{peardir}/Horde/Kolab/FreeBusy/Access.php
 %{peardir}/Horde/Kolab/FreeBusy/Cache.php
 %{peardir}/Horde/Kolab/FreeBusy/Imap.php
 %{peardir}/Horde/Kolab/FreeBusy/View.php
 %{peardir}/Horde/Kolab/FreeBusy/Report.php
-%dir %{peardir}/Horde/Kolab/Test
+%{peardir}/Horde/Kolab/FreeBusy/Cache/DB.php
+%{peardir}/Horde/Kolab/FreeBusy/Cache/DB/acl.php
+%{peardir}/Horde/Kolab/FreeBusy/Cache/DB/xacl.php
+%{peardir}/Horde/Kolab/FreeBusy/Cache/File.php
+%{peardir}/Horde/Kolab/FreeBusy/Cache/File/acl.php
+%{peardir}/Horde/Kolab/FreeBusy/Cache/File/pvcal.php
+%{peardir}/Horde/Kolab/FreeBusy/Cache/File/vcal.php
+%{peardir}/Horde/Kolab/FreeBusy/Cache/File/xacl.php
+%{peardir}/Horde/Kolab/FreeBusy/Cache/Freebusy/Partial.php
+%{peardir}/Horde/Kolab/FreeBusy/Cache/Freebusy/Partial/Decorator/Log.php
+%{peardir}/Horde/Kolab/FreeBusy/Cache/Freebusy/Partials.php
+%{peardir}/Horde/Kolab/FreeBusy/Export/Freebusy/Acl.php
+%{peardir}/Horde/Kolab/FreeBusy/Export/Freebusy/Acl/Cache.php
+%{peardir}/Horde/Kolab/FreeBusy/Export/Freebusy/Acl/Null.php
+%{peardir}/Horde/Kolab/FreeBusy/Export/Freebusy/Combined.php
+%{peardir}/Horde/Kolab/FreeBusy/Export/Freebusy/Combined/Decorator/Cache.php
+%{peardir}/Horde/Kolab/FreeBusy/Export/Freebusy/Xacl.php
+%{peardir}/Horde/Kolab/FreeBusy/Export/Freebusy/Xacl/Cache.php
+%{peardir}/Horde/Kolab/FreeBusy/Export/Freebusy/Xacl/Configuration.php
+%{peardir}/Horde/Kolab/FreeBusy/Export/Freebusy/Xacl/Decorator/Log.php
 %{peardir}/Horde/Kolab/Test/FreeBusy.php
-%dir %{peardir}/docs/Kolab_FreeBusy
 %{peardir}/docs/Kolab_FreeBusy/COPYING
-%dir %{peardir}/tests/Kolab_FreeBusy
-%dir %{peardir}/tests/Kolab_FreeBusy/Horde
-%dir %{peardir}/tests/Kolab_FreeBusy/Horde/Kolab
-%dir %{peardir}/tests/Kolab_FreeBusy/Horde/Kolab/FreeBusy
 %{peardir}/tests/Kolab_FreeBusy/Horde/Kolab/FreeBusy/AllTests.php
 %{peardir}/tests/Kolab_FreeBusy/Horde/Kolab/FreeBusy/FreeBusyTest.php
 %{peardir}/tests/Kolab_FreeBusy/Horde/Kolab/FreeBusy/FreeBusyScenarioTest.php
-%dir /var/www/html/kolab/freebusy
-%config /var/www/html/kolab/freebusy/config.php
-/var/www/html/kolab/freebusy/freebusy.php
-/var/www/html/kolab/freebusy/pfb.php
-/var/www/html/kolab/freebusy/regenerate.php
+%{peardir}/tests/Kolab_FreeBusy/Horde/Kolab/FreeBusy/Autoload.php
+%{peardir}/tests/Kolab_FreeBusy/Horde/Kolab/FreeBusy/Class/CacheTest.php
+%{peardir}/tests/Kolab_FreeBusy/Horde/Kolab/FreeBusy/Class/Export/Freebusy/Combined/Decorator/CacheTest.php
+%{peardir}/tests/Kolab_FreeBusy/Horde/Kolab/FreeBusy/Class/Export/Freebusy/CombinedTest.php
+%{peardir}/tests/Kolab_FreeBusy/Horde/Kolab/FreeBusy/phpunit.xml
+%config %{kolab_webroot}/freebusy/config.php
+%{kolab_webroot}/freebusy/freebusy.php
+%{kolab_webroot}/freebusy/pfb.php
+%{kolab_webroot}/freebusy/regenerate.php
 %attr(750,root,root) %{cachedir}
