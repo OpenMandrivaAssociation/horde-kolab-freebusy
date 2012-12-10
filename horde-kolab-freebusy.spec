@@ -6,7 +6,7 @@
 
 Name:          horde-kolab-freebusy
 Version:       0.1.7
-Release:       %mkrel 2
+Release:       %mkrel 1
 Summary:       A package for providing free/busy information
 License:       LGPL
 Group:         Networking/Mail
@@ -18,8 +18,8 @@ Requires:      php-pear
 Requires:      horde-framework
 Requires:      horde-date
 Requires:      horde-icalendar
-#Requires:      horde-kolab-storage
-# Requires:      horde-kolab-server
+Requires:      horde-kolab-storage
+Requires:      horde-kolab-server
 Requires:      php-dba
 BuildRequires: horde-framework
 BuildRequires: php-pear
@@ -115,3 +115,37 @@ fi
 %{kolab_webroot}/freebusy/pfb.php
 %{kolab_webroot}/freebusy/regenerate.php
 %attr(750,root,root) %{cachedir}
+
+
+%changelog
+* Sun Aug 08 2010 Thomas Spuhler <tspuhler@mandriva.org> 0.1.7-1mdv2011.0
++ Revision: 567497
+- Updated to version 0.1.7
+- added version 0.1.7 source file
+
+* Sat Jul 31 2010 Thomas Spuhler <tspuhler@mandriva.org> 0.1.5-5mdv2011.0
++ Revision: 564069
+- Removed Patch0 config.php.diff
+- Increased release for rebuild
+- removed the accidently added patch
+- added the patch
+- Updated release to 4
+  Corrected the location of the web files
+  Added config patch
+
+* Wed May 12 2010 Thomas Spuhler <tspuhler@mandriva.org> 0.1.5-3mdv2010.1
++ Revision: 544545
+- changed dependencies from kolab-server and kolab-storage to horde-kolab-server and horde-kolab-storage
+  increase rel to 3
+
+* Wed Mar 17 2010 Thomas Spuhler <tspuhler@mandriva.org> 0.1.5-2mdv2010.1
++ Revision: 523083
+- replaced Requires(pre): %%{_bindir}/pear with Requires(pre): php-pear
+  increased release version
+
+* Sun Feb 28 2010 Thomas Spuhler <tspuhler@mandriva.org> 0.1.5-1mdv2010.1
++ Revision: 512769
+- removed BuildRequires: horde-framework
+- import horde-kolab-freebusy
+
+
