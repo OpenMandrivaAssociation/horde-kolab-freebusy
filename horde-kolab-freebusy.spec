@@ -6,7 +6,7 @@
 
 Name:          horde-kolab-freebusy
 Version:       0.1.7
-Release:       %mkrel 1
+Release:       2
 Summary:       A package for providing free/busy information
 License:       LGPL
 Group:         Networking/Mail
